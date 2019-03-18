@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ * ---
+ * Hint: You can use the debug stream to print initialTX and initialTY, if Thor seems not follow your orders.
+ **/
+int main()
+{
+    int lightX; // the X position of the light of power
+    int lightY; // the Y position of the light of power
+    int initialTX; // Thor's starting X position
+    int initialTY; // Thor's starting Y position
+    cin >> lightX >> lightY >> initialTX >> initialTY; cin.ignore();
+    //initializes dirX and Y to help with change of directions if needed
+    int dirY=initialTY;
+    int dirX =initialTX;
+    // game loop
+    while (1) {
+        int remainingTurns; // The remaining amount of turns Thor can move. Do not remove this line.
+        cin >> remainingTurns; cin.ignore();
+        //outputs for the answers
+        string thorDirY;
+        string thorDirX;
+        
+        // Write an action using cout. DON'T FORGET THE "<< endl"
+        // To debug: cerr << "Debug messages..." << endl;
+        //determines where thor needs to go by saving the direction to a variable
+        if(lightY < dirY){
+            thorDirY='N';
+            dirY--;
+        }
+        else if (lightY> dirY){
+            thorDirY='S';
+            dirY++;
+        }
+        else
+            thorDirY="";
+        if(lightX >dirX){
+            thorDirX='E';
+            dirX++;
+        }
+        else if(lightX < dirX){
+            thorDirX='W';
+             dirX--;
+        }
+        else
+            thorDirX="";
+        
+        
+        // A single line providing the move to be made: N NE E SE S SW W or NW
+        cout << thorDirY <<thorDirX << endl;
+    }
+}
