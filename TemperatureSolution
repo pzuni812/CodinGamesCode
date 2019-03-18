@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ * assistance from another programmer
+ **/
+int main()
+{
+    int n; // the number of temperatures to analyse
+    cin >> n; cin.ignore();
+     int arr[n];
+    int result = 5527 * n;
+    for (int i = 0; i < n; i++) {
+        int t; // a temperature expressed as an integer ranging from -273 to 5526
+        cin >> t; cin.ignore();
+        //arr[i]=t;
+        //cout<<arr[i]<<endl;
+        if(abs(result)==abs(t)){
+             if (t > 0)
+             {
+                result=t;
+             }
+         }
+        else if(abs(result)>abs(t)){
+            result=t;
+    }
+   // used a random number from the array to compare to the rest of the array
+   // int result=arr[0];
+    //loop to check if there is duplicates, both negative and positive versions
+    // also checks for what is the closest number to 0 in the array
+   /
+       
+    // Write an action using cout. DON'T FORGET THE "<< endl"
+    // To debug: cerr << "Debug messages..." << endl;
+
+   
+    }
+    cout << result << endl;
+}
