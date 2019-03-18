@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <bitset>
+
+using namespace std;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ * 2 hours
+ **/
+int main()
+{
+    string MESSAGE;
+    getline(cin, MESSAGE);
+    int mesSize = MESSAGE.size();
+    string messageBin;
+    string chuckCode="";
+    //grabs each character of the message and converts it into a binary number
+    for(int i=0;i<MESSAGE.size();i++){
+        int temp = MESSAGE[i];
+        messageBin+=bitset<7>(temp).to_string();
+    }//end for
+    //checks each binary number and converts it into chuck code
+    for(int i=0; i<messageBin.size(); i++){
+        //if there is 1, add one zero before adding the 0 placeholders for each 1
+        if(messageBin[i]=='1'){
+            chuckCode+="0 "; 
+            for(int j=i;messageBin[i]==messageBin[j];j++){
+                chuckCode+="0";
+                i=j;
+            }//end for
+        }//end if
+        //if there is 0, add two zero before adding the 0 placeholders for each 0
+        if(messageBin[i]=='0'){
+            chuckCode+="00 ";
+            for(int j=i;messageBin[i]==messageBin[j];j++){
+                chuckCode+="0";
+                i=j;
+            }//end for
+        }//end if
+       chuckCode+=" ";
+    }//end for
+    //print out answer. The final answer has a leading space at the end so have to
+    //get rid of it
+    cout<<chuckCode.substr(0,chuckCode.size()-1)<<endl;
+    
+}//end main
