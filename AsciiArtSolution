@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+int main()
+{
+    int L;
+    cin >> L; cin.ignore();
+    int H;
+    cin >> H; cin.ignore();
+    string T;
+    //int j=0;
+    getline(cin, T);
+    string temp;
+    //convert all lowercase letters into uppercase letters
+    transform(T.begin(), T.end(),T.begin(), ::toupper);
+    for(int i =0; i<T.size();i++){
+        if(T[i]<65 || T[i]>90)
+            T[i]='?';
+        
+    }//end for
+    //this is the list of letters in Ascii art
+    //It prints out each row of the letter
+    string letters = "";
+    int letterPos = 0;
+    for (int i = 0; i < H; i++) {
+        string ROW;
+        getline(cin, ROW);
+        
+        //should grab each letter from the row and append it to the string
+        //if a character is not within the letter range, convert it to a '?'
+        for(int j =0; j<T.size();j++){
+            if(T[j]=='?')
+                letters+=ROW.substr(104,L);
+                //end if
+           else{
+               letterPos = (T[j]-65)*L;
+               letters += ROW.substr(letterPos,L);
+            }//end else
+           
+        }//end for
+       letters+= "\n";
+    }//end for
+
+    // Write an action using cout. DON'T FORGET THE "<< endl"
+    // To debug: cerr << "Debug messages..." << endl;
+cout<<letters<<endl;
+    
+}//end main
